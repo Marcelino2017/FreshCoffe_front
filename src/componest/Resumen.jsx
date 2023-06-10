@@ -1,9 +1,10 @@
 import useQuiosco from "../../hooks/useQuiesco"
+import { formatearDienro } from "../helpers";
 import ResumenProducto from "./ResumenProducto";
 
 export default function Resumen() {
 
-  const { pedido } = useQuiosco();
+  const { pedido, total } = useQuiosco();
 
   return (
     <aside className="w-72 h-screen overflow-y-scroll p-5">
@@ -15,7 +16,7 @@ export default function Resumen() {
       </p>
 
       <div className="py-10">
-        {pedido.length === 0 ?  (
+        {pedido.length === 0 ? (
           <p className="text-center text-2xl">
             No hay elemento en tú pedido aún
           </p>
@@ -23,7 +24,7 @@ export default function Resumen() {
           pedido.map(producto => (
             <ResumenProducto
               key={producto.id}
-              producto={producto} 
+              producto={producto}
             />
           ))
         )}
@@ -31,11 +32,12 @@ export default function Resumen() {
 
       <p className="text-xl mt-10">
         Total:{''}
+        {formatearDienro(total)}
       </p>
 
       <form className="w-full">
         <div className="mt-5">
-          <input 
+          <input
             type="submit"
             className="bg-indigo-500 hover:bg-indigo-800
             px-5 py-2 rounded uppercase font-bold text-white text-center 

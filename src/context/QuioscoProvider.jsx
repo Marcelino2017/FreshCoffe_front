@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from "react"
 import { toast } from "react-toastify";
 import { categorias as categoriaDB } from "../data/categorias";
-import axios from "axios";
+import clientAxios from '../config/axios'
 
 const QuioscoContex = createContext();
 
@@ -21,7 +21,7 @@ const QuioscoProvider = ({ children }) => {
 
     const obtenerCategorias = async () => {
         try {
-            const { data } = await axios('http://127.0.0.1:8000/api/categoria')
+            const { data } = await clientAxios('/api/categoria')
             setCategorias(data.data);
             setCategoriaActual(data.data[0])
         } catch (error) {

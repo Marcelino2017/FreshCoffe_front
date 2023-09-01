@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom"
-import Sidebar from "../componest/Sidebar"
-import Resumen from "../componest/Resumen"
+import Sidebar from "../componets/Sidebar"
+import Resumen from "../componets/Resumen"
 import useQuiosco from "../../hooks/useQuiesco"
 import Modal from "react-modal"
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
-import ModalProducto from "../componest/ModalProducto"
+import ModalProducto from "../componets/ModalProducto"
 
 const customStyles = {
   content: {

@@ -72,8 +72,9 @@ const QuioscoProvider = ({ children }) => {
     const handleSubmitNuevaOrden = async () => {
         const token = localStorage.getItem('AUTH_TOKEN')
         try {
-            await clientAxios.post('/api/pedidos', {
-
+            await clientAxios.post('/api/pedidos', 
+            {
+                total
             },
             {
                 headers: {

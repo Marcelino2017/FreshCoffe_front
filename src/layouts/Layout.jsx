@@ -23,8 +23,8 @@ Modal.setAppElement('#root');
 
 export default function Layout() {
 
-  const {user, error} = useAuth({middleware: 'auth'})
-  const { modal, handleClickModal } = useQuiosco();
+  useAuth({middleware: 'auth'})
+  const { modal } = useQuiosco();
 
 
   return (

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import { useAuth } from "../../hooks/useAuth"
 
 export default function AdminSidebar() {
-    const { logout, user } = useAuth({middleware: 'auth'})
+    const { logout } = useAuth({middleware: 'auth'})
 
     return (
         <aside className="md:w-72 h-screen">

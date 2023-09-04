@@ -54,7 +54,7 @@ export default function Resumen() {
             className={`${comprobarPedido() ? 'bg-indigo-100' : 'bg-indigo-500'} hover:bg-indigo-800
             px-5 py-2 rounded uppercase font-bold text-white text-center 
             w-full cursor-pointer`}
-            value="Confirmar Peido"
+            value="Confirmar Pedido"
             disabled={comprobarPedido()}
           />
         </div>

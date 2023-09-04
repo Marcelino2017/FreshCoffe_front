@@ -4,6 +4,9 @@ import AuthLayout from './layouts/AuthLayout'
 import Inicio from './view/Inicio'
 import Login from './view/Login'
 import Resgistro from './view/Resgistro'
+import AdminLayout from './layouts/AdminLayout'
+import Ordenes from './view/Ordenes'
+import Productos from './view/Productos'
 
 const router = createBrowserRouter([
     {
@@ -27,6 +30,20 @@ const router = createBrowserRouter([
             {
                 path: '/auth/registro',
                 element:<Resgistro/>
+            }
+        ]
+    },
+    {
+        path: '/admin',
+        element: <AdminLayout/>,
+        children: [
+            {
+                index: true,
+                element: <Ordenes/>
+            },
+            {
+                path: '/admin/productos',
+                element: <Productos/>
             }
         ]
     }

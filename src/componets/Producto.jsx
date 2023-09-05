@@ -1,7 +1,7 @@
 import { formatearDienro } from "../helpers";
 import useQuiosco from "../../hooks/useQuiesco";
 
-export default function Producto({ producto }) {
+export default function Producto({ producto, botonAgregar = false, botonDisponible = false }) {
 
     const { handleClickModal, handleSetProducto } = useQuiosco();
     const { nombre, imagen, precio } = producto;
@@ -22,17 +22,31 @@ export default function Producto({ producto }) {
                     {formatearDienro(precio)}
                 </p>
 
-                <button
-                    type="button"
-                    className="bg-indigo-600 hover:bg-indigo-800 
-                    text-white w-full mt-5 p-3 uppercase font-bold"
-                    onClick={() => {
-                        handleClickModal();
-                        handleSetProducto(producto);
-                    }}
-                >
-                    Agregar
-                </button>
+                {botonAgregar && (
+                    <button
+                        type="button"
+                        className="bg-indigo-600 hover:bg-indigo-800 
+                        text-white w-full mt-5 p-3 uppercase font-bold"
+                        onClick={() => {
+                            handleClickModal();
+                            handleSetProducto(producto);
+                        }}
+                    >
+                        Agregar
+                    </button>
+                )}
+
+                {botonDisponible && (
+                    <button
+                        type="button"
+                        className="bg-indigo-600 hover:bg-indigo-800 
+                        text-white w-full mt-5 p-3 uppercase font-bold"
+                        onClick={() => {}}
+                    >
+                        Producto Agotado
+                    </button>
+                )}
+                
             </div>
         </div>
     )

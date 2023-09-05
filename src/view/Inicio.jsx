@@ -8,8 +8,14 @@ import clientAxios from "../config/axios";
 export default function Inicio() {
 
     const { categoriaActual } = useQuiosco();
+    const token = localStorage.getItem('AUTH_TOKEN')
 
-    const fetcher = () => clientAxios('/api/productos').then(data => data.data)
+    const fetcher = () => clientAxios('/api/productos', {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }).then(data => data.data)
+
     const { data, error, isLoading } = useSWR('/api/productos', fetcher, {
         refreshInterval: 1000
     })
@@ -27,6 +33,7 @@ export default function Inicio() {
                     <Producto
                         key={producto.imagen}
                         producto={producto}
+                        botonAgregar={true}
                     />
                 ))}
             </div>

@@ -1,6 +1,7 @@
 import useSWR from 'swr'
 import clientAxios from '../config/axios'
 import { formatearDienro } from '../helpers'
+import useQuiosco from "../../hooks/useQuiesco";
 
 export default function Ordenes() {
     const token = localStorage.getItem('AUTH_TOKEN')
@@ -11,7 +12,9 @@ export default function Ordenes() {
     })
 
     const { data, error, isLoading } = useSWR('/api/pedidos', fetcher, {refreshInterval: 1000});
-    console.log(data);
+    
+    const { handleClickCompletarPedido } = useQuiosco();
+
     if (isLoading) return 'Cargando...'
     return (
         <div>
@@ -56,6 +59,7 @@ export default function Ordenes() {
                         <button
                             type='button'
                             className='bg-indigo-600 hover:bg-indigo-800 px-5 py-2 rounded uppercase font-bold text-white text-center w-full cursor-pointer'
+                            onClick={() => handleClickCompletarPedido(pedido.id)}
                         >Completar</button>
                     </div>
                 ))}
